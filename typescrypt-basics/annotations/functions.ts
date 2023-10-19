@@ -23,6 +23,20 @@ const throwError = (message: string): void => {
     throw new Error(message)
   }
 }
+function prime(value: number): number {
+  return Math.random() * value
+}
+const checkFun = (
+  name: string,
+  value: number,
+  access: (val: number) => number
+): number | void => {
+  if (name === 'done') {
+    return access(value)
+  }
+}
+
+console.log('Check', checkFun('done', 30, prime))
 
 const todaysWeather = {
   date: new Date(),
@@ -33,8 +47,8 @@ const logWeather = ({
   date,
   weather,
 }: {
-  date: Date,
-  weather: string,
+    date: Date
+    weather: string
 }): void => {
   console.log(date)
   console.log(weather)
